@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRACTICA - AJAX</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container my-5">
+      <h1 class="text-danger">fetch API - AJAX</h1>
+
+      <!--Spinner Loading-->
+      <section class="d-flex align-items-center d-none" id="loading">
+        <strong>Loading...</strong>
+        <div
+          class="spinner-border ms-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </section>
+      <!--/Spinner Loading-->
+
+      <!--Cards-->
+      <section class="row" id="card-dinamicas"></section>
+      <!--/Cards-->
+
+      <!--template (no se coloca dentro de la seccion dinamica para evitar sobreescrituras)-->
+      <template id="template-card">
+        <article class="col-12 col-md-6 col-lg-3 mb-3">
+          <div class="card text-center shadow">
+            <img
+              src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+              alt=""
+              class="card-img-top"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-primary lead">El nombre personaje</h5>
+              <p class="text-secondary lead">Human Estático</p>
+            </div>
+          </div>
+        </article>
+      </template>
+      <!--/template-->
+    </div>
+    <script src="js/ejercicio/PRACTICA.js"></script>
+  </body>
+</html>

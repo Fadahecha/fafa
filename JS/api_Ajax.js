@@ -110,3 +110,60 @@ JSON: (JavaScript Object Notation, es un formato basado en texto estándar para 
 *****************************************************************
 
  */
+
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+    .then((res) => console.log(res))
+    .catch()
+
+//ststus 200: significa aue todo esta ok 
+
+//simplemente estoy recuperando un archivo jSON a traves de la red e imprimiendo en consola
+
+//fetch() toma como argumento la ruta al recurso y devuelve un objeto Promise (promesa a traves del .then())
+// que contiene un objeto Response (respuesta)
+
+//es simplemente una respuesta HTTP sin el archivo JSON
+
+//HAY QUE USAR el metodo json() desde la respuesta para extraer el contenido 
+
+//el metodo json esta implementado por los objetos Request y Response
+
+
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+    .then((res) => res.json())                        
+    .then((data) => console.log(data))
+
+//lo mismo pero sin funcion de flecha
+
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')   
+.then((response) => {
+    return response.json()                           //<--{return}
+})
+.then((data) => {
+    return console.log(data)
+})    
+
+//Es un poco redundante, PERO para sacar el contenido del juerpo del JSON usamos .json en la respuesta
+
+//Por eso devuelvo la Response (res) del fetch() en formatp json()
+//Luego recibo esa informacion en otra promesa (.then)
+
+//EN RESUMEN:
+
+//fetch() genera un objeto Response (una promesa), ese objeto debe ser formateado con json()
+//el resultado del formateo se recibe en otra promesa (.then)
+
+//con async y await
+
+
+fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+.then(response => response.json())
+.then(data => console.log(data.forms[0].name, data.abilities[1].is_hidden))
+
+//en este caso acceso a la propiedad forms que es un array, selecciono 
+//el elemento del array [0] y uso la propiedad .name ... Todo eso viene de la API
+
+/****************************************************************** 
+ * Fetch() tambien recibe como siguiente argumento un array en donde
+ * se puede configurar metodos, headers, bodies, etc
+*/

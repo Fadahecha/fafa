@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEGA_PRACTICA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>MEGA_PRACTICA</h2>
+    </div>
+
+    <div class="container my-5">
+      <h1>Estudiantes y Profesores</h1>
+
+      <!--Formulario-->
+      <form action="" id="formulario">
+        <input
+          type="text"
+          class="form-control mb-2"
+          value="Fafa"
+          name="nombre"
+          placeholder="Ingrese Nombre"
+          required
+        />
+        <!--trabajare con form-data... Necesito usar 'name'-->
+        <input
+          type="number"
+          class="form-control mb-2"
+          value="40"
+          name="edad"
+          placeholder="Ingrese edad"
+          required
+        />
+
+        <select
+          class="form-select mb-2"
+          aria-label="Default select example"
+          name="opcion"
+        >
+          <option value="Estudiante" selected>Estudiante</option>
+          <option value="Profesor">Profesor</option>
+          <option value="etc" disabled>etc</option>
+        </select>
+
+        <!--Los botones tipo submit para aprovechar el addEventListener con JS-->
+        <button class="btn btn-primary" type="submit">Agregar</button>
+      </form>
+      <!--/Formulario-->
+
+      <!-------------------------------------->
+      <section class="row mt-3">
+        <!--Esstudiantes-->
+        <div class="col-6" id="cardsEstudiantes"></div>
+        <!--Profesores-->
+        <div class="col-6" id="cardsProfesores"></div>
+      </section>
+      <!------------------------------------------------>
+    </div>
+
+    <!--Template Estudiante-->
+    <template id="templateEstudiante">
+      <article class="card mb-2">
+        <div class="card-body">
+          <h5>
+            <span class="text-primary">Nombre</span>
+            <span class="badge bg-success">Aprobado</span>
+          </h5>
+          <h6><!--Estudiante--></h6>
+          <p class="lead">Edad</p>
+          <button class="btn btn-success">Aprobar</button>
+          <button class="btn btn-danger">Reprobar</button>
+        </div>
+      </article>
+    </template>
+    <!--/Template-->
+
+    <!--Template Profesor-->
+    <template id="TemplateProfesor">
+      <article class="card mb-2 bg-dark text-white">
+        <div class="card-body">
+          <h5>Nombre</h5>
+          <h6>Profesor</h6>
+          <p class="lead">Edad</p>
+        </div>
+      </article>
+    </template>
+    <!--/template-->
+    <script src="js/ejercicio/MEGA_PRACTICA.js"></script>
+  </body>
+</html>

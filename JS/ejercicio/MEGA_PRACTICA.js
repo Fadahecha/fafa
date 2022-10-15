@@ -12,28 +12,29 @@ const TemplateProfesor = document.querySelector('#TemplateProfesor').content;
 const estudiantes = [] /**Despues de crear las clases y el metodo static */
 const profesores = []
 
+const alert = document.querySelector('.alert')
 
 //delegacion de eventos (detectar botones aue aun no existen o aue existiran gracias a los templates)
 //la 'e' es lo inportante
 document.addEventListener('click', (e) => {
    // console.log(e.target.dataset.nombre);
-
-    if(e.target.dataset.nombre){
+                      
+    if(e.target.dataset.uid){
         // console.log(e.target.matches('.btn-success'));
         if(e.target.matches('.btn-success')){
             estudiantes.map(item => {
-                if(item.nombre === e.target.dataset.nombre){
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = true
                 }
                 console.log(item)
-                return item
+                return item                   //nombre fue cambiado por uid
             });
             
         }
 
         if(e.target.matches('.btn-danger')){
             estudiantes.map(item => {
-                if(item.nombre === e.target.dataset.nombre){
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = false
                 }
                 console.log(item)
@@ -59,6 +60,8 @@ class Persona {
     constructor(nombre, edad){
         this.nombre = nombre
         this.edad = edad
+        //alternativa para id, mientras no se escriba absurdamente rapido no habran ids iguales.. no hacer forEach
+        this.uid = `${Date.now()}`  //buena alternativa para pasar de numeros a string
     }
 
     static pintarPersonaUI(personas, tipo){   //<--UI se usa cuando se pinta en html desde js
@@ -117,8 +120,15 @@ class Estudiante extends Persona{
         //dinamico: fuera del if(), asi no debo escribir por cada condicion
         clone.querySelector('.badge').textContent = this.#estado ? "Aprobado" : 'Reprobado'
 
-        clone.querySelector('.btn-success').dataset.nombre = this.nombre;   //estos dataset.nombre, envia el atributo data-nombre ="fafa"      //el nombre se puede repetir, es incorrecto, es mejor un correo o id
-        clone.querySelector('.btn-danger').dataset.nombre = this.nombre;    //si usara dataset.correo, u otra cosa se comportaria de la misma forma creando el atributo
+        // clone.querySelector('.btn-success').dataset.nombre = this.nombre;   //estos dataset.nombre, envia el atributo data-nombre ="fafa"      //el nombre se puede repetir, es incorrecto, es mejor un correo o id
+        // clone.querySelector('.btn-danger').dataset.nombre = this.nombre;    //si usara dataset.correo, u otra cosa se comportaria de la misma forma creando el atributo
+        //---------------------------------------------------------------
+        clone.querySelector('.btn-success').dataset.uid = this.uid;
+        clone.querySelector('.btn-danger').dataset.uid = this.uid;
+        /**OJO, todos los dataset devuelven string, hay aue hacer el cambio
+         * en this.uid = Date.now() => `{Date.now()}`
+         */
+        //---------------------------------------------------------------
 
         return clone
     }
@@ -142,6 +152,9 @@ class Profesor extends Persona{
 formulario.addEventListener('submit', (e) =>{
     e.preventDefault()
 
+    //siempre que el alerta se dispare, para evitar aue el alerta se quede incluso al rectificar
+    alert.classList.add('d-none')
+
     const datos = new FormData(formulario); //<-- id formulario
     //console.log(datos)
     //datos.forEach((item) => console.log(item))
@@ -152,6 +165,16 @@ formulario.addEventListener('submit', (e) =>{
     //   atributos name FormData
     const [nombre, edad, opcion] = [...datos.values()];
     //console.log(nombre, edad, opcion)
+
+
+    /**Validacion para espacios en blanco */
+    if(!nombre.trim() || !edad.trim() || !opcion.trim()){
+        console.log('algun dato en blanco')
+        alert.classList.remove('d-none')
+        return   //<-- importante para que continue el codigo de abajo
+    
+    }
+    //**Validacion */
 
 
     if(opcion === "Estudiante"){

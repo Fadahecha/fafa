@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Local Storage</h2>
+
+      <div class="container my-5">
+        <h1>TODO app</h1>
+        <!--Alerta validacion-->
+        <section class="alert alert-danger d-none" id="alertaValidacion">
+          Campo obligatorio
+        </section>
+        <form action="" id="formulario">
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Ingrese una tarea"
+            class="form-control mb-2"
+            value="TODO 1"
+          />
+
+          <button class="btn btn-primary w-100" type="submit">Agrregar</button>
+          <!--Siempre el boton aue procesa es de tipo submit-->
+        </form>
+
+        <section id="pintarTodo" class="mt-3"></section>
+      </div>
+    </div>
+
+    <!--template-->
+    <template id="templateTodo">
+      <article
+        class="alert alert-warning d-flex align-items-center justify-content-between"
+      >
+        <p class="lead mb-0">lorem</p>
+        <div>
+          <button class="btn btn-danger">Borrar</button>
+          <!--dataSet insertara <<data-id ="164141112">> desde JS poraue no puedo asignar un id fijo ya que se repetiria -->
+        </div>
+      </article>
+    </template>
+
+    <!--<script src="js/export.js"></script>-->
+    <script src="js/ejercicio/PRACTICA_localStorage.js" type="module"></script>
+  </body>
+</html>

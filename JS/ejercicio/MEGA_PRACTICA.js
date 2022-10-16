@@ -23,7 +23,7 @@ document.addEventListener('click', (e) => {
         // console.log(e.target.matches('.btn-success'));
         if(e.target.matches('.btn-success')){
             estudiantes.map(item => {
-                if(item.uid === e.target.dataset.uid){
+                if(item.uid === e.target.dataset.uid){    // con == tambien puede servir pero se fuerza mas la maquina
                     item.setEstado = true
                 }
                 console.log(item)

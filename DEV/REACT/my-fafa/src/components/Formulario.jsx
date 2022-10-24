@@ -15,7 +15,7 @@ const Formulario = () => {
 
     const [error, setError] = useState(false)
 
-
+    const [dark, setDark] = useState(false)
 
     //onSubmit - handleSubmit
     const handleSubmit = (e) => {
@@ -34,6 +34,8 @@ const Formulario = () => {
             setError(false)
         }
 
+
+        //resetear
         setTodo({
             todoName: ' ',
             todoDescription: ' ',
@@ -75,12 +77,14 @@ const Formulario = () => {
         <div className="alert alert-danger">
             <span>Campos Obligatorios</span>
         </div>)
+
+        
     
 
     //return (Formulario)
   return (
     <>
-        <h2>Formulario Controlado</h2>
+        <h2 className='text-danger'>Formulario Controlado</h2>
 
         {
             error ? <PintarError/> : null
@@ -147,6 +151,7 @@ const Formulario = () => {
         </div>
 
         <button type='submit' className='btn btn-primary'>Agregar</button>
+        <button type='submit' className='btn btn-secondary'>Cambiar</button>
 
     </form>
     </>

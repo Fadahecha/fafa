@@ -1,4 +1,5 @@
 import React from 'react'
+import DLmode from './components/DLmode'
 import Formulario from './components/Formulario'
 // import FormNoControlado from './components/FormNoControlado'
 
@@ -8,6 +9,7 @@ const App = () => {
     <div className='container'>
     <h1>Formularios</h1>
     <Formulario/>
+    <DLmode/>
     {/* <FormNoControlado/> */}
     </div>
   )
